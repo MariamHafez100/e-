@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
 
-      initialRoute: MyCategory.routeName,
+      initialRoute: AccountWidget.routName,
       routes: {
         AccountWidget.routName: (context) => AccountWidget(),
         MyCategory.routeName: (context) => MyCategory(),

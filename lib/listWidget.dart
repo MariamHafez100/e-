@@ -3,8 +3,18 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MyCategory extends StatelessWidget {
+import 'myContainerList.dart';
+
+class MyCategory extends StatefulWidget {
   static const String routeName = "category";
+
+  @override
+  State<MyCategory> createState() => _MyCategoryState();
+}
+
+class _MyCategoryState extends State<MyCategory> {
+  int selectedIndex = -1;
+  //int selectedIndex =0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,28 +55,41 @@ class MyCategory extends StatelessWidget {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width * 0.30,
-                    margin: EdgeInsets.only(left: 15),
-                    // padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(left: 10),
+
                     decoration: BoxDecoration(
+
                         color: Color(0xffDBE4ED),
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10)),
                         border: Border(
                             top: BorderSide(width: 1, color: Colors.grey),
-                            left: BorderSide(width: 1, color: Colors.grey))),
-                    //height: double.infinity,
-                    //width: MediaQuery.of(context).size.width*0.25,
-                    //color: Colors.blue,
+                            left: BorderSide(width: 1, color: Colors.grey),
+                            right: BorderSide(width: 0, color: Colors.grey),
+                        bottom: BorderSide(width: 0, color: Colors.grey)
+                        )),
+
                     child: ListView.builder(
                         itemBuilder: (context, index) {
-                          return Container(
-                              padding: EdgeInsets.all(20),
-                              // decoration: BoxDecoration(border: Border(top: BorderSide(width: 6,color: Colors.black),
-                              // left: BorderSide(width: 6,color: Colors.black) )),
-                              //width: MediaQuery.of(context).size.width*0.25,
-                              //color: Colors.pinkAccent,
-                              child: Text(
-                                "MENS FASHION",
-                                style: TextStyle(color: Color(0xff004182)),
-                              ));
+                          return MyContainer(
+                            isSelected: index == selectedIndex,
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+                          );
+
+
+                            // Container(
+                            //   padding: EdgeInsets.all(20),
+                            //   // decoration: BoxDecoration(border: Border(top: BorderSide(width: 6,color: Colors.black),
+                            //   // left: BorderSide(width: 6,color: Colors.black) )),
+                            //   //width: MediaQuery.of(context).size.width*0.25,
+                            //   //color: Colors.pinkAccent,
+                            //   child: Text(
+                            //     "MENS FASHION",
+                            //     style: TextStyle(color: Color(0xff004182)),
+                            //   ));
                         },
                         itemCount: 6),
                   ),
@@ -93,15 +116,18 @@ class MyCategory extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      '''MENS
- SHOPING''',
+                                    Text("Men\nShopping",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 16,
                                           color: Color(0xff06004F)),
                                     ),
                                     ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:Color(0xff06004F) ,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                          ),),
                                         onPressed: () {},
                                         child: Text("SHOP NOW"))
                                   ],
@@ -117,6 +143,7 @@ class MyCategory extends StatelessWidget {
                                 crossAxisCount: 3,
                                 mainAxisSpacing: 7,
                                 crossAxisSpacing: 5,
+                                mainAxisExtent: 130
                               ),
                               itemBuilder: (context, index) {
                                 return SizedBox(
@@ -139,7 +166,7 @@ class MyCategory extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(height: 5),
-                                      Text("Bags",style: TextStyle(color: Color(0xff06004F) ),)
+                                      Text("Bags",style: TextStyle(fontWeight: FontWeight.w500,color: Color(0xff06004F)),)
                                     ],
                                   ),
                                 );
@@ -147,6 +174,7 @@ class MyCategory extends StatelessWidget {
                               itemCount: 10,
                             ),
                           )
+
                           // Row(
                           //   children: [
                           //     Expanded(
