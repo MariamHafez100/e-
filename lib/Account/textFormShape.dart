@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 class TextFormShape extends StatelessWidget {
   //String? Function(String?) validation;
-
   //TextEditingController controllertext;
   //static bool ofsecure = true;
   // IconButton? icon;
+  String text;
   TextInputType keyboard;
   // bool secure;
-
-  String text;
 
   TextFormShape(
       {required this.text,
@@ -26,16 +24,16 @@ class TextFormShape extends StatelessWidget {
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
-            borderSide: BorderSide(color:Color(0xff06004F), width: 3)),
+            borderSide: BorderSide(color:Color(0x96004182), width: 2)),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(width: 7, color:Color(0xff06004F)),
+          borderSide: BorderSide(width: 2, color:Color(0x96004182)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(width: 3, color: Color(0xff06004F)),
+          borderSide: BorderSide(width: 2, color: Color(0x96004182)),
         ),
-        suffixIcon: Icon((Icons.edit)),
+        suffixIcon: Icon((Icons.edit),color: Color(0xff06004F)),
 
         hintText:  text,
         hintStyle:TextStyle(
